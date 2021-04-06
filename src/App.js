@@ -2,8 +2,7 @@ import React, { Fragment } from "react";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { apiEndpoint } from "./prismic-configuration";
-import { Help, Preview, NotFound } from "./pages";
-import PageProjet from "./pages/PageProjet";
+import { PageProjet, Help, Preview, NotFound } from "./pages";
 
 /**
  * Main application componenet
