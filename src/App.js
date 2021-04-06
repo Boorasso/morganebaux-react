@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { apiEndpoint } from "./prismic-configuration";
-import { PageProjet, Help, Preview, NotFound } from "./pages";
+import { Home, PageProjet, Help, Preview, NotFound } from "./pages";
 
 /**
  * Main application componenet
@@ -22,8 +22,8 @@ const App = (props) => {
       </Helmet>
       <BrowserRouter>
         <Switch>
-          <Redirect exact from="/" to="/help" />
-          <Route exact path="/page_projet/:uid" component={PageProjet} />;
+          <Route exact path="/" component={Home} />
+          <Route exact path="/page_projet/:uid" component={PageProjet} />
           <Route exact path="/help" component={Help} />
           <Route exact path="/preview" component={Preview} />
           <Route component={NotFound} />
