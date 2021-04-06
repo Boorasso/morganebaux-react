@@ -3,6 +3,8 @@ import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import { client, linkResolver } from "../prismic-configuration";
 import NotFound from "./NotFound";
+// dev only
+import ReactJson from "react-json-view";
 
 const Home = ({ match }) => {
   const [doc, setDocData] = useState(null);
@@ -33,7 +35,7 @@ const Home = ({ match }) => {
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    return <pre className="home">{JSON.stringify(doc, null, 4)}</pre>;
+    return <ReactJson src={doc} />;
   } else if (notFound) {
     return <NotFound />;
   }
