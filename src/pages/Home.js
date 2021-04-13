@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Prismic from "prismic-javascript";
-import { RichText } from "prismic-reactjs";
 import { client, linkResolver } from "../prismic-configuration";
 import NotFound from "./NotFound";
 // dev only
@@ -17,7 +16,10 @@ const Home = ({ match }) => {
       // We are using the function to get a document by its UID
       const result = await client.query(
         Prismic.Predicates.at("document.type", "page_projet"),
-        { orderings: "[my.page_projet.date desc]" }
+        {
+          orderings: "[my.page_projet.date_du_projet desc]",
+          pageSize: 3,
+        }
       );
 
       if (result) {
