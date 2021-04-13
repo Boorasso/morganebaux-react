@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { RichText } from "prismic-reactjs";
 import { client, linkResolver } from "../prismic-configuration";
 import NotFound from "./NotFound";
+// dev only
+import ReactJson from "react-json-view";
 
 const PageProjet = ({ match }) => {
   const [doc, setDocData] = useState(null);
@@ -29,16 +31,7 @@ const PageProjet = ({ match }) => {
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    return (
-      <div className="page_projet">
-        {/* This is how to get an image into your template */}
-        <img src={doc.data.image.url} alt={doc.data.image.alt} />
-        {/* This is how to render a Rich Text field as plain text */}
-        <h1>{RichText.asText(doc.data.title)}</h1>
-        {/* This is how to render a Rich Text field into your template as HTML */}
-        <RichText render={doc.data.description} linkResolver={linkResolver} />
-      </div>
-    );
+    return <ReactJson src={doc} />;
   } else if (notFound) {
     return <NotFound />;
   }
