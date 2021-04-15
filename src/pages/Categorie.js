@@ -9,6 +9,7 @@ import ReactJson from "react-json-view";
 const Categorie = ({ match }) => {
   const [doc, setDocData] = useState(null);
   const [notFound, toggleNotFound] = useState(false);
+  const uid = match.params.uid;
   const categoriesID = {
     "spectacle-vivant": "XI0a5REAAIZJeB1M",
     images: "YHVo_xQAACMAU34f",
@@ -16,12 +17,11 @@ const Categorie = ({ match }) => {
     decoration: "YHVo2xQAACIAU31z",
     "cine-animation-maquettes": "XI0bPBEAAIZJeB7O",
   };
-  const uid = match.params.uid;
 
   useEffect(() => {
     const fetchData = async () => {
       let query = [Prismic.Predicates.at("document.type", "page_projet")];
-      if (uid != "all") {
+      if (uid !== "all") {
         query.push(
           Prismic.Predicates.at("my.page_projet.categorie", categoriesID[uid])
         );
