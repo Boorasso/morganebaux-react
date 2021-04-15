@@ -21,10 +21,11 @@ const Home = ({ match }) => {
           pageSize: 3,
         }
       );
+      const images = await client.getSingle("home");
 
-      if (result) {
+      if (result && images) {
         // We use the State hook to save the document
-        return setDocData(result);
+        return setDocData({ ...result, ...images });
       } else {
         // Otherwise show an error message
         console.warn(
