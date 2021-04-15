@@ -9,19 +9,27 @@ import ReactJson from "react-json-view";
 const Categorie = ({ match }) => {
   const [doc, setDocData] = useState(null);
   const [notFound, toggleNotFound] = useState(false);
+  const categoriesID = {
+    "spectacle-vivant": "XI0a5REAAIZJeB1M",
+    images: "YHVo_xQAACMAU34f",
+    "expo-evenementiel": "YHVorBQAACEAU3yi",
+    decoration: "YHVo2xQAACIAU31z",
+    "cine-animation-maquettes": "XI0bPBEAAIZJeB7O",
+  };
   const uid = match.params.uid;
 
   useEffect(() => {
     const fetchData = async () => {
-      // We are using the function to get a document by its UID
-      const result = await client.query([
-        Prismic.Predicates.at("document.type", "page_projet"),
-        Prismic.Predicates.at("my.page_projet.categorie.slug", uid),
-      ]);
+      let query = [Prismic.Predicates.at("document.type", "page_projet")];
+      if (uid != "all") {
+        query.push(
+          Prismic.Predicates.at("my.page_projet.categorie", categoriesID[uid])
+        );
+      }
+      const result = await client.query(query);
 
       if (result) {
         // We use the State hook to save the document
-        console.log(result);
         return setDocData(result);
       } else {
         // Otherwise show an error message
