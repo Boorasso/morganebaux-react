@@ -3,6 +3,7 @@ import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import { client, linkResolver } from "../prismic-configuration";
 import NotFound from "./NotFound";
+import categoriesID from "../config/queries";
 // dev only
 import ReactJson from "react-json-view";
 
@@ -10,13 +11,6 @@ const Categorie = ({ match }) => {
   const [doc, setDocData] = useState(null);
   const [notFound, toggleNotFound] = useState(false);
   const uid = match.params.uid;
-  const categoriesID = {
-    "spectacle-vivant": "XI0a5REAAIZJeB1M",
-    images: "YHVo_xQAACMAU34f",
-    "expo-evenementiel": "YHVorBQAACEAU3yi",
-    decoration: "YHVo2xQAACIAU31z",
-    "cine-animation-maquettes": "XI0bPBEAAIZJeB7O",
-  };
 
   useEffect(() => {
     const fetchData = async () => {
