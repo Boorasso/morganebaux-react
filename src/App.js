@@ -8,8 +8,6 @@ import {
   PageProjet,
   Actualites,
   ContactCV,
-  Help,
-  Preview,
   NotFound,
 } from "./pages";
 
@@ -36,8 +34,6 @@ const App = (props) => {
           <Route exact path="/page_projet/:uid" component={PageProjet} />
           <Route exact path="/actualites" component={Actualites} />
           <Route exact path="/contact-cv" component={ContactCV} />
-          <Route exact path="/help" component={Help} />
-          <Route exact path="/preview" component={Preview} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
