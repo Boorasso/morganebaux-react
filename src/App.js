@@ -10,6 +10,7 @@ import {
   ContactCV,
   NotFound,
 } from "./pages";
+import { Navigation } from "./components";
 
 /**
  * Main application componenet
@@ -27,6 +28,7 @@ const App = (props) => {
           src={`//static.cdn.prismic.io/prismic.js?repo=${repoName}&new=true`}
         />
       </Helmet>
+      <Navigation />
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
