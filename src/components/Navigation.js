@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Prismic from "prismic-javascript";
-import { client, linkResolver } from "../prismic-configuration";
+import React from "react";
 
-const Navigation = () => {
+const Navigation = (categories) => {
+  console.log(categories);
+
   return null;
 };
 
