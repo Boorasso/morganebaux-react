@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { RichText } from "prismic-reactjs";
-import { client, linkResolver } from "../prismic-configuration";
+import { client } from "../prismic-configuration";
 import NotFound from "./NotFound";
-// dev only
-import ReactJson from "react-json-view";
 
 const Actualites = () => {
   const [doc, setDocData] = useState(null);
@@ -29,7 +26,7 @@ const Actualites = () => {
   }); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    return <ReactJson src={doc} />;
+    return <h1>Hello Page Actualités</h1>;
   } else if (notFound) {
     return <NotFound />;
   }

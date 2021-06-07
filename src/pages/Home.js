@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Prismic from "prismic-javascript";
-import { client, linkResolver } from "../prismic-configuration";
+import { client } from "../prismic-configuration";
 import NotFound from "./NotFound";
-// dev only
-import ReactJson from "react-json-view";
 
 const Home = ({ match }) => {
   const [doc, setDocData] = useState(null);
   const [notFound, toggleNotFound] = useState(false);
-
   const uid = match.params.uid;
 
   useEffect(() => {
@@ -38,7 +35,7 @@ const Home = ({ match }) => {
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    return <ReactJson src={doc} />;
+    return <h1>Hello Home</h1>;
   } else if (notFound) {
     return <NotFound />;
   }

@@ -24,8 +24,10 @@ const App = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let query = [Prismic.Predicates.at("document.type", "categories")];
-      const result = await client.query(query);
+      const result = await client.query(
+        Prismic.Predicates.at("document.type", "categories"),
+        { orderings: "[my.categories.position]" }
+      );
       if (result) {
         // We use the State hook to save the document
         return setDocData(result);
@@ -47,7 +49,7 @@ const App = (props) => {
         />
       </Helmet>
       {doc && (
-        <div>
+        <Fragment>
           <Navigation categories={doc.results} />
           <BrowserRouter>
             <Switch>
@@ -65,7 +67,7 @@ const App = (props) => {
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>
-        </div>
+        </Fragment>
       )}
     </Fragment>
   );

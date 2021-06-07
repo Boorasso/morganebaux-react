@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Prismic from "prismic-javascript";
 import { client } from "../prismic-configuration";
 import NotFound from "./NotFound";
-// dev only
-import ReactJson from "react-json-view";
 
 const Categorie = ({ match, categories }) => {
   const [doc, setDocData] = useState(null);
@@ -25,7 +23,9 @@ const Categorie = ({ match, categories }) => {
           Prismic.Predicates.at("my.page_projet.categorie", categoriesID[uid])
         );
       }
-      const result = await client.query(query);
+      const result = await client.query(query, {
+        orderings: "[my.page_projet.date_du_projet desc]",
+      });
 
       if (result) {
         // We use the State hook to save the document
@@ -46,7 +46,7 @@ const Categorie = ({ match, categories }) => {
 
   if (doc) {
     console.log(doc);
-    return <ReactJson src={doc} />;
+    return <h1>Hello Catégorie {uid === "all" ? "all" : uid}</h1>;
   } else if (notFound) {
     return <NotFound />;
   }

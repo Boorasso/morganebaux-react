@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { RichText } from "prismic-reactjs";
-import { client, linkResolver } from "../prismic-configuration";
+import { client } from "../prismic-configuration";
 import NotFound from "./NotFound";
-// dev only
-import ReactJson from "react-json-view";
 
 const PageProjet = ({ match }) => {
   const [doc, setDocData] = useState(null);
   const [notFound, toggleNotFound] = useState(false);
-
   const uid = match.params.uid;
 
   useEffect(() => {
@@ -31,7 +27,7 @@ const PageProjet = ({ match }) => {
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    return <ReactJson src={doc} />;
+    return <h1>Hello Projet {doc.data.titre_du_projet}</h1>;
   } else if (notFound) {
     return <NotFound />;
   }
