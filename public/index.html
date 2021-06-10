@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/morgane logo.png">
     <link rel="stylesheet" href="/stylesheets/reset.css"/>
     <link rel="stylesheet" href="/stylesheets/style.css"/>
     <link rel="stylesheet" href="/stylesheets/vendors/help.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:100,400,500,600" rel="stylesheet" type="text/css">
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -18,9 +17,22 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React Prismic App</title>
+    <title>Morgane Baux | Scénographe</title>
+    <meta name="description" content="Morgane Baux - Scénographe et accessoiriste pour le théâtre et le cinéma d'animation. Conception et fabrication de décors et d'accessoires." />
   </head>
   <body>
+    <div id="pre-render">
+      <div>
+        <figure class="logo">
+          <a title="mailto:morgane.baux@gmail.com" href="mailto:morgane.baux@gmail.com">
+            <img src="%PUBLIC_URL%/images/morgane logo.svg" alt="Morgane Baux - Logo" />
+            <h1>Morgane Baux <span class="line-break">Scénographie</span><span>.</span></h1>
+          </a>
+        </figure>
+        <p id="description"><strong>Scénographe et accessoiriste pour le théâtre et le cinéma d'animation. Conception et fabrication de décors et d'accessoires.</strong></p>
+      </div>
+      <p id="javascript-disclaimer">Ce site utilise JavaScript pour fonctionner. Si vous voyez ce texte, vous avez peut-être désactivé cette fonctionnalité dans votre navigateur.</p>
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
