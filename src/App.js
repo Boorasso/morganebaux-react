@@ -14,6 +14,12 @@ import {
 } from "./pages";
 import { Navigation } from "./components";
 
+function removeSplashScreen() {
+  const splashScreen = document.getElementById("pre-render");
+  splashScreen.style.opacity = "0%";
+  window.setTimeout(() => splashScreen.remove(), 2000);
+}
+
 /**
  * Main application componenet
  */
@@ -30,6 +36,7 @@ const App = (props) => {
       );
       if (result) {
         // We use the State hook to save the document
+        removeSplashScreen();
         return setDocData(result);
       } else {
         // Otherwise show an error message
