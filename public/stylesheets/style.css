@@ -3,8 +3,6 @@ html {
 }
 
 body {
-  //-webkit-text-stroke-width: .05px;
-  //-webkit-text-stroke-color: white;
   -webkit-font-smoothing: antialiased;
   font-family: "Andale Mono", "Source Code Pro", monospace;
   font-size: 18px;
