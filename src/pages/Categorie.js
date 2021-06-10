@@ -7,15 +7,12 @@ const Categorie = ({ match, categories }) => {
   const [doc, setDocData] = useState(null);
   const [notFound, toggleNotFound] = useState(false);
   const uid = match.params.uid;
+  const categoriesID = {};
+  categories.forEach(
+    (categorie) => (categoriesID[categorie.uid] = categorie.id)
+  );
 
   useEffect(() => {
-    const categoriesID = {};
-    if (categories) {
-      categories.forEach(
-        (categorie) => (categoriesID[categorie.uid] = categorie.id)
-      );
-    }
-
     const fetchData = async () => {
       let query = [Prismic.Predicates.at("document.type", "page_projet")];
       if (uid !== "all") {
