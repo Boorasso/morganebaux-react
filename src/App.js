@@ -12,7 +12,7 @@ import {
   ContactCV,
   NotFound,
 } from "./pages";
-import { Navigation } from "./components";
+import { Logo, Navigation } from "./components";
 
 function removeSplashScreen() {
   const splashScreen = document.getElementById("pre-render");
@@ -57,8 +57,9 @@ const App = (props) => {
       </Helmet>
       {doc && (
         <Fragment>
-          <Navigation categories={doc.results} />
           <BrowserRouter>
+            <Logo />
+            <Navigation categories={doc.results} />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route
