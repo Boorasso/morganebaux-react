@@ -23,7 +23,7 @@ body {
   text-align: center;
   color: #424242;
   opacity: 100%;
-  transition: opacity ease-in-out 2s;
+  transition: opacity ease-in-out 2s, transform 2s;
 }
 
 #pre-render > div {

@@ -17,6 +17,7 @@ import { Logo, Navigation } from "./components";
 function removeSplashScreen() {
   const splashScreen = document.getElementById("pre-render");
   splashScreen.style.opacity = "0%";
+  splashScreen.style.transform = "scale(1.5)";
   window.setTimeout(() => splashScreen.remove(), 2000);
 }
 
