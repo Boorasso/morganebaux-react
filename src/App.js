@@ -58,7 +58,7 @@ const App = (props) => {
           src={`//static.cdn.prismic.io/prismic.js?repo=${repoName}&new=true`}
         />
       </Helmet>
-      {doc && (
+      {doc && doc.results && (
         <div className={styles.main}>
           <BrowserRouter>
             <header className={styles.navigation}>
