@@ -1,0 +1,31 @@
+@import "./variables.scss";
+
+body,
+a {
+  color: $text-color;
+}
+
+.main {
+  margin: auto;
+  width: 95%;
+  max-width: 1200px;
+  font-size: 14px;
+}
+
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 20px;
+  vertical-align: top;
+  font-size: 1.2em;
+}
+
+.content {
+  font-size: 0.8em;
+  margin-bottom: 35px;
+  padding-top: 20px;
+  width: 100%;
+  margin-left: 0;
+}
