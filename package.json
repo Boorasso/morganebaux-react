@@ -3,20 +3,27 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "prismic-javascript": "^2.1.1",
+    "eslint": "7.28.0",
+    "normalize-url": "^6.0.1",
+    "prismic-javascript": "^3.0.2",
     "prismic-reactjs": "^1.1.2",
+    "prop-types": "^15.7.2",
     "qs": "^6.9.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-load-script": "0.0.6",
     "react-router-dom": "^5.1.2",
+    "typescript": "4.3.2",
+    "webpack": "4.44.2",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "node-sass": "^6.0.0",
     "react-json-view": "^1.21.3",
-    "react-scripts": "^3.2.0"
+    "react-scripts": "^4.0.3",
+    "sass-loader": "10"
   },
   "scripts": {
     "start": "react-scripts start",
