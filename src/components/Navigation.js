@@ -58,6 +58,16 @@ const Navigation = ({ categories }) => {
               {categorie.nameEnd}
             </NavLink>
           ))}
+          <NavLink
+            to="/contact-cv"
+            exact
+            className={`${styles.link} ${styles.contact}`}
+            onClick={handleButtonClick}
+            activeClassName={styles.active}
+          >
+            Contact/CV
+          </NavLink>
+          <p className={styles.copyright}>copyright © Morgane Baux</p>
         </nav>
       </div>
     );

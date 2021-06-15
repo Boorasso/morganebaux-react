@@ -29,3 +29,22 @@ a {
   width: 100%;
   margin-left: 0;
 }
+
+@media screen and (min-width: $desktop-display) {
+  .main {
+    width: 92%;
+    display: flex;
+  }
+  .navigation {
+    width: 250px;
+    position: fixed;
+    flex-direction: column;
+  }
+  .content {
+    width: calc(100% - 250px);
+    font-size: 0.8em;
+    margin-bottom: 35px;
+    margin-left: 250px;
+    padding-top: 20px;
+  }
+}
