@@ -5,7 +5,7 @@ import styles from "../stylesheets/components/Navigation.module.scss";
 const Navigation = ({ categories }) => {
   const [isNavOpen, setisNavOpen] = useState(false);
 
-  if (categories.length) {
+  if (categories) {
     const slicedCategories = categories.map((categorie) => {
       const index = categorie.data.index_de_la_lettre_coloree;
       const nameStart = categorie.data.nom_de_la_categorie.slice(0, index);
