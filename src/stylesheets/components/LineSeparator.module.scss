@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.66%;
+}
+
+.line-separation {
+  height: 1px;
+  border-bottom: 2px dotted #424242;
+  width: 35%;
+  display: inline-block;
+}
+
+.text {
+  margin: 25px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  display: -webkit-flex;
+}
+
+.arrow {
+  transform: rotate(90deg);
+  display: block;
+  margin-left: 5px;
+}

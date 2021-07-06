@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Prismic from "prismic-javascript";
+import { Link } from "react-router-dom";
 import { client } from "../prismic-configuration";
+import { Thumbnail, LineSeparator } from "../components";
 import NotFound from "./NotFound";
+import styles from "../stylesheets/pages/Home.module.scss";
 
 const Home = ({ match }) => {
   const [doc, setDocData] = useState(null);
@@ -35,7 +38,40 @@ const Home = ({ match }) => {
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    return <h1>Hello Home</h1>;
+    return (
+      <Fragment>
+        <div className={styles["three-thumbs-row"]}>
+          <Thumbnail
+            backgroundImage={doc.data.image_tous_les_projets.url}
+            linkTo="/categorie/all"
+            linkText="Tous les projets"
+          />
+          <Thumbnail
+            backgroundImage={doc.data.image_actualites.url}
+            linkTo="/actualites"
+            linkText="Actualités"
+          />
+          <Thumbnail
+            backgroundImage={doc.data.image_contact_cv.url}
+            linkTo="/contact-cv"
+            linkText="Contact CV"
+          />
+        </div>
+        <LineSeparator>Dernièrement</LineSeparator>
+        <div className={styles["three-thumbs-row"]}>
+          {doc.results.map((projet) => {
+            return (
+              <Thumbnail
+                key={projet.id}
+                backgroundImage={projet.data.image_principale.url}
+                linkTo={`/projet/${projet.uid}`}
+                linkText={projet.data.titre_du_projet}
+              />
+            );
+          })}
+        </div>
+      </Fragment>
+    );
   } else if (notFound) {
     return <NotFound />;
   }

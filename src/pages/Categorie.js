@@ -37,7 +37,7 @@ const Categorie = ({ match, categories }) => {
     };
 
     // We filter out anything that isn't a known category uid
-    if (categoriesID !== {} && categoriesID[uid]) {
+    if (categoriesID !== {} && (categoriesID[uid] || uid === "all")) {
       fetchData();
     } else {
       console.warn(
