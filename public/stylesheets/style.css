@@ -1,15 +1,89 @@
 html {
-    font-size: 100%;
+  font-size: 100%;
 }
 
 body {
-    //-webkit-text-stroke-width: .05px;
-    //-webkit-text-stroke-color: white;
-    -webkit-font-smoothing: antialiased;
-    font-family: Lato, sans-serif;
-    font-size: 18px;
-    line-height:35px;
-    font-weight: 400;
-    letter-spacing: 0.45px;
-    color: #516677;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Andale Mono", "Source Code Pro", monospace;
+  font-size: 18px;
+  line-height: 35px;
+  font-weight: 400;
+  letter-spacing: 0.45px;
+  color: #516677;
+}
+
+#pre-render {
+  z-index: 1;
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  color: #424242;
+  opacity: 100%;
+  transition: opacity ease-in-out 2s;
+}
+
+#pre-render > div {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 900px;
+  padding: 0 15px;
+}
+
+.line-break {
+  display: block;
+}
+
+#pre-render a {
+  text-decoration: none;
+  color: #424242;
+  display: block;
+  margin: 0 auto;
+}
+
+#pre-render img {
+  width: 139px;
+  margin: 0 auto;
+}
+
+#pre-render h1 {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-size: 1.1em;
+  line-height: 1.4em;
+  position: relative;
+  top: -32px;
+}
+
+#pre-render h1 span:nth-of-type(2) {
+  font-size: 2.5em;
+  color: black;
+  line-height: 0.1em;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+#javascript-disclaimer {
+  font-family: sans-serif;
+  font-size: 0.7em;
+  font-weight: 100;
+  letter-spacing: 0;
+  line-height: 1.5;
+  opacity: 0%;
+  animation: 1s 5s appear;
+  animation-fill-mode: forwards;
+  padding: 30px 5px 5px;
 }

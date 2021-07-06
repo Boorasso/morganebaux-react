@@ -36,8 +36,14 @@ const Categorie = ({ match, categories }) => {
       }
     };
 
-    if (categoriesID !== {}) {
+    // We filter out anything that isn't a known category uid
+    if (categoriesID !== {} && (categoriesID[uid] || uid === "all")) {
       fetchData();
+    } else {
+      console.warn(
+        "Page document not found. Make sure it exists in your Prismic repository"
+      );
+      toggleNotFound(true);
     }
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 

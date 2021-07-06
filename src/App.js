@@ -12,7 +12,16 @@ import {
   ContactCV,
   NotFound,
 } from "./pages";
-import { Navigation } from "./components";
+import { Logo, Navigation } from "./components";
+import styles from "./stylesheets/App.module.scss";
+
+function removeSplashScreen() {
+  const splashScreen = document.getElementById("pre-render");
+  if (splashScreen) {
+    splashScreen.style.opacity = "0%";
+    window.setTimeout(() => splashScreen.remove(), 2000);
+  }
+}
 
 /**
  * Main application componenet
@@ -30,6 +39,7 @@ const App = (props) => {
       );
       if (result) {
         // We use the State hook to save the document
+        removeSplashScreen();
         return setDocData(result);
       } else {
         // Otherwise show an error message
@@ -48,26 +58,31 @@ const App = (props) => {
           src={`//static.cdn.prismic.io/prismic.js?repo=${repoName}&new=true`}
         />
       </Helmet>
-      {doc && (
-        <Fragment>
-          <Navigation categories={doc.results} />
+      {doc && doc.results && (
+        <div className={styles.main}>
           <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route
-                exact
-                path="/categorie/:uid"
-                render={(props) => (
-                  <Categorie {...props} categories={doc.results} />
-                )}
-              />
-              <Route exact path="/projet/:uid" component={PageProjet} />
-              <Route exact path="/actualites" component={Actualites} />
-              <Route exact path="/contact-cv" component={ContactCV} />
-              <Route component={NotFound} />
-            </Switch>
+            <header className={styles.navigation}>
+              <Logo />
+              <Navigation categories={doc.results} />
+            </header>
+            <main className={styles.content}>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route
+                  exact
+                  path="/categorie/:uid"
+                  render={(props) => (
+                    <Categorie {...props} categories={doc.results} />
+                  )}
+                />
+                <Route exact path="/projet/:uid" component={PageProjet} />
+                <Route exact path="/actualites" component={Actualites} />
+                <Route exact path="/contact-cv" component={ContactCV} />
+                <Route component={NotFound} />
+              </Switch>
+            </main>
           </BrowserRouter>
-        </Fragment>
+        </div>
       )}
     </Fragment>
   );

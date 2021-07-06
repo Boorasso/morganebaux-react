@@ -1,0 +1,33 @@
+@import "../variables.scss";
+
+.logo-link {
+  font-family: "Andale Mono", "Source Code Pro", monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: block;
+  text-decoration: none;
+
+  img {
+    width: 139px;
+  }
+
+  h1 {
+    position: relative;
+    top: -32px;
+    letter-spacing: 0;
+    width: 140px;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.4em;
+    margin-top: 0;
+  }
+
+  span {
+    display: block;
+    &:nth-of-type(2) {
+      font-size: 45px;
+      color: black;
+      line-height: 2px;
+    }
+  }
+}

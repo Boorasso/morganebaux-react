@@ -1,0 +1,58 @@
+@import "./variables.scss";
+
+body {
+  font-family: $main-font;
+}
+
+body,
+a {
+  color: $text-color;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main {
+  margin: auto;
+  width: 95%;
+  max-width: 1200px;
+  font-size: 14px;
+}
+
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 20px;
+  vertical-align: top;
+  font-size: 1.2em;
+}
+
+.content {
+  font-size: 0.8em;
+  margin-bottom: 35px;
+  padding-top: 20px;
+  width: 100%;
+  margin-left: 0;
+}
+
+@media screen and (min-width: $desktop-display) {
+  .main {
+    width: 92%;
+    display: flex;
+  }
+  .navigation {
+    width: 250px;
+    position: fixed;
+    flex-direction: column;
+  }
+  .content {
+    width: calc(100% - 250px);
+    font-size: 0.8em;
+    margin-bottom: 35px;
+    margin-left: 250px;
+    padding-top: 25px;
+  }
+}
