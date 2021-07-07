@@ -1,10 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Prismic from "prismic-javascript";
-import { Link } from "react-router-dom";
 import { client } from "../prismic-configuration";
-import { Thumbnail, LineSeparator } from "../components";
+import { Thumbnail, LineSeparator, ThreeThumbsRow } from "../components";
 import NotFound from "./NotFound";
-import styles from "../stylesheets/pages/Home.module.scss";
 
 const Home = ({ match }) => {
   const [doc, setDocData] = useState(null);
@@ -40,7 +38,7 @@ const Home = ({ match }) => {
   if (doc) {
     return (
       <Fragment>
-        <div className={styles["three-thumbs-row"]}>
+        <ThreeThumbsRow>
           <Thumbnail
             backgroundImage={doc.data.image_tous_les_projets.url}
             linkTo="/categorie/all"
@@ -56,9 +54,9 @@ const Home = ({ match }) => {
             linkTo="/contact-cv"
             linkText="Contact CV"
           />
-        </div>
+        </ThreeThumbsRow>
         <LineSeparator>Dernièrement</LineSeparator>
-        <div className={styles["three-thumbs-row"]}>
+        <ThreeThumbsRow>
           {doc.results.map((projet) => {
             return (
               <Thumbnail
@@ -69,7 +67,7 @@ const Home = ({ match }) => {
               />
             );
           })}
-        </div>
+        </ThreeThumbsRow>
       </Fragment>
     );
   } else if (notFound) {

@@ -8,15 +8,17 @@ const Thumbnail = (props) => {
   const linkText = props.linkText;
 
   return (
-    <div
-      className={styles.background}
-      style={{
-        backgroundImage: `url("${backgroundImage}")`,
-      }}
-    >
-      <Link to={linkTo} className={styles.link}>
-        {linkText}
-      </Link>
+    <div className={styles.padding}>
+      <div
+        className={styles.background}
+        style={{
+          backgroundImage: `url("${backgroundImage}")`,
+        }}
+      >
+        <Link to={linkTo} className={styles.link}>
+          {linkText}
+        </Link>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,13 @@
+@import "../variables.scss";
+
+.three-thumbs-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: -1.5%;
+}
+
+@media screen and (min-width: $desktop-display) {
+  .three-thumbs-row {
+    margin: -0.7%;
+  }
+}

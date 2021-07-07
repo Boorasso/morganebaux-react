@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Prismic from "prismic-javascript";
 import { client } from "../prismic-configuration";
+import { Thumbnail, ThreeThumbsRow } from "../components";
 import NotFound from "./NotFound";
 
 const Categorie = ({ match, categories }) => {
@@ -48,8 +49,20 @@ const Categorie = ({ match, categories }) => {
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    console.log(doc);
-    return <h1>Hello Catégorie {uid === "all" ? "all" : uid}</h1>;
+    return (
+      <ThreeThumbsRow>
+        {doc.results.map((projet) => {
+          return (
+            <Thumbnail
+              key={projet.id}
+              backgroundImage={projet.data.image_principale.url}
+              linkTo={`/projet/${projet.uid}`}
+              linkText={projet.data.titre_du_projet}
+            />
+          );
+        })}
+      </ThreeThumbsRow>
+    );
   } else if (notFound) {
     return <NotFound />;
   }
