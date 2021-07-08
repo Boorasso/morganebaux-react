@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { client } from "../prismic-configuration";
+import { RichText } from "prismic-reactjs";
 import NotFound from "./NotFound";
+import { CustomLink } from "../components";
+import styles from "../stylesheets/pages/Actualites.module.scss";
+import richTextStyling from "../stylesheets/RichText.module.scss";
 
 const Actualites = () => {
   const [doc, setDocData] = useState(null);
@@ -26,7 +30,24 @@ const Actualites = () => {
   }); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    return <h1>Hello Page Actualités</h1>;
+    return (
+      <Fragment>
+        <div
+          style={{ backgroundImage: `url("${doc.data.image.url}")` }}
+          className={styles.image}
+        >
+          <div className={styles.title}>
+            <RichText render={doc.data.titre} />
+          </div>
+        </div>
+        <section className={`${styles.content} ${richTextStyling.content}`}>
+          <RichText
+            render={doc.data.actualites}
+            serializeHyperlink={CustomLink}
+          />
+        </section>
+      </Fragment>
+    );
   } else if (notFound) {
     return <NotFound />;
   }

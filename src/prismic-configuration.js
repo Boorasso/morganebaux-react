@@ -9,7 +9,18 @@ const accessToken =
 
 // -- Link resolution rules
 export const linkResolver = (doc) => {
-  if (doc.type === "page") return `/page/${doc.uid}`;
+  if (doc.type === "categories") {
+    return `/categorie/${doc.uid}`;
+  }
+  if (doc.type === "page_projet") {
+    return `/projet/${doc.uid}`;
+  }
+  if (doc.type === "page_actualites") {
+    return "/actualites";
+  }
+  if (doc.type === "page_contact_cv") {
+    return "/contact-cv";
+  }
   return "/";
 };
 
