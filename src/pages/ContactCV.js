@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { client } from "../prismic-configuration";
 import NotFound from "./NotFound";
 
-const ContactCV = () => {
+const ContactCV = (props) => {
   const [doc, setDocData] = useState(null);
   const [notFound, toggleNotFound] = useState(false);
 
@@ -23,7 +23,7 @@ const ContactCV = () => {
       }
     };
     fetchData();
-  }); // Skip the Effect hook if the UID hasn't changed
+  }, []); // Only run the Effect hook once
 
   if (doc) {
     return <h1>Hello Page Contact / CV</h1>;

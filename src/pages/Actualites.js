@@ -6,7 +6,7 @@ import { CustomLink } from "../components";
 import styles from "../stylesheets/pages/Actualites.module.scss";
 import richTextStyling from "../stylesheets/RichText.module.scss";
 
-const Actualites = () => {
+const Actualites = (props) => {
   const [doc, setDocData] = useState(null);
   const [notFound, toggleNotFound] = useState(false);
 
@@ -27,7 +27,7 @@ const Actualites = () => {
       }
     };
     fetchData();
-  }); // Skip the Effect hook if the UID hasn't changed
+  }, []); // Only run the Effect hook once
 
   if (doc) {
     return (
