@@ -27,6 +27,7 @@ const Actualites = (props) => {
       }
     };
     fetchData();
+    document.title = "Morgane Baux | Actualités";
   }, []); // Only run the Effect hook once
 
   if (doc) {

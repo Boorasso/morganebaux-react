@@ -27,6 +27,7 @@ const ContactCV = (props) => {
       }
     };
     fetchData();
+    document.title = "Morgane Baux | Contact - CV";
   }, []); // Only run the Effect hook once
 
   if (doc) {

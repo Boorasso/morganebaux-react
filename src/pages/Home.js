@@ -33,6 +33,7 @@ const Home = ({ match }) => {
       }
     };
     fetchData();
+    document.title = "Morgane Baux | Scénographie";
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {

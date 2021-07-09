@@ -14,6 +14,7 @@ const PageProjet = ({ match }) => {
 
       if (result) {
         // We use the State hook to save the document
+        document.title = `Morgane Baux | ${result.data.titre_du_projet}`;
         return setDocData(result);
       } else {
         // Otherwise show an error message

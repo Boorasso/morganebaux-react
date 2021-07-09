@@ -9,16 +9,22 @@ const Categorie = ({ match, categories }) => {
   const [notFound, toggleNotFound] = useState(false);
   const uid = match.params.uid;
   const categoriesID = {};
-  categories.forEach(
-    (categorie) => (categoriesID[categorie.uid] = categorie.id)
-  );
+  categories.forEach((categorie) => {
+    categoriesID[categorie.uid] = {
+      id: categorie.id,
+      name: categorie.data.nom_de_la_categorie,
+    };
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       let query = [Prismic.Predicates.at("document.type", "page_projet")];
       if (uid !== "all") {
         query.push(
-          Prismic.Predicates.at("my.page_projet.categorie", categoriesID[uid])
+          Prismic.Predicates.at(
+            "my.page_projet.categorie",
+            categoriesID[uid].id
+          )
         );
       }
       const result = await client.query(query, {
@@ -39,6 +45,11 @@ const Categorie = ({ match, categories }) => {
 
     // We filter out anything that isn't a known category uid
     if (categoriesID !== {} && (categoriesID[uid] || uid === "all")) {
+      if (uid === "all") {
+        document.title = "Morgane Baux | Tous les projets";
+      } else {
+        document.title = `Morgane Baux | ${categoriesID[uid].name}`;
+      }
       fetchData();
     } else {
       console.warn(
