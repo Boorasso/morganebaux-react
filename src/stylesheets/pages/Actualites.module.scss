@@ -37,6 +37,23 @@
   font-family: Verdana, sans-serif;
 }
 
+.rich-text {
+  p {
+    min-height: 1em;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  ol {
+    padding-top: 10px;
+    margin-bottom: 10px;
+  }
+  ul {
+    padding-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
 @media screen and (min-width: $desktop-display) {
   .title {
     h1 {

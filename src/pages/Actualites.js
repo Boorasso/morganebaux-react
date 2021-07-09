@@ -40,7 +40,9 @@ const Actualites = (props) => {
             <RichText render={doc.data.titre} />
           </div>
         </div>
-        <section className={`${styles.content} ${richTextStyling.content}`}>
+        <section
+          className={`${styles.content} ${styles["rich-text"]} ${richTextStyling.content}`}
+        >
           <RichText
             render={doc.data.actualites}
             serializeHyperlink={CustomLink}

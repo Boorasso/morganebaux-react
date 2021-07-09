@@ -1,14 +1,14 @@
 .content {
+  h2 {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
   a {
     text-decoration: underline;
     color: rgb(94, 94, 94);
   }
   p {
     display: block;
-    min-height: 1em;
-    padding-top: 10px;
-    margin-bottom: 10px;
-    line-height: 1.5;
   }
   strong {
     font-weight: bold;
@@ -19,14 +19,10 @@
   ol {
     list-style-type: decimal;
     padding-left: 25px;
-    padding-top: 10px;
-    margin-bottom: 10px;
   }
   ul {
     list-style: square;
     padding-left: 25px;
-    padding-top: 10px;
-    margin-bottom: 10px;
   }
   img {
     max-width: 100%;
