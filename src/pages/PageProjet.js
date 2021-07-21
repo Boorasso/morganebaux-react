@@ -120,6 +120,12 @@ const PageProjet = ({ match }) => {
             }
             return null;
           })}
+          {doc.data.video && (
+            <div
+              dangerouslySetInnerHTML={{ __html: doc.data.video.html }}
+              className={styles.embed}
+            />
+          )}
         </section>
       </Fragment>
     );
