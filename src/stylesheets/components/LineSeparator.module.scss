@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -25,4 +27,14 @@
   transform: rotate(90deg);
   display: block;
   margin-left: 5px;
+}
+
+.mobile-hide {
+  display: none !important;
+}
+
+@media screen and (min-width: $desktop-display) {
+  .mobile-hide {
+    display: flex !important;
+  }
 }

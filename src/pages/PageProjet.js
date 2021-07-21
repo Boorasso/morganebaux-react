@@ -1,9 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { client } from "../prismic-configuration";
+import { RichText } from "prismic-reactjs";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
+import { CustomLink, LineSeparator } from "../components";
 import NotFound from "./NotFound";
+import styles from "../stylesheets/pages/PageProjet.module.scss";
+import richTextStyling from "../stylesheets/RichText.module.scss";
 
 const PageProjet = ({ match }) => {
   const [doc, setDocData] = useState(null);
+  const [lightBoxState, setLightBoxState] = useState({
+    photoIndex: 0,
+    isOpen: false,
+  });
   const [notFound, toggleNotFound] = useState(false);
   const uid = match.params.uid;
 
@@ -28,7 +38,91 @@ const PageProjet = ({ match }) => {
   }, [uid]); // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    return <h1>Hello Projet {doc.data.titre_du_projet}</h1>;
+    const images = doc.data.illustration.map((item) => item.image.url);
+    const photoIndex = lightBoxState.photoIndex;
+    const isOpen = lightBoxState.isOpen;
+
+    return (
+      <Fragment>
+        {lightBoxState.isOpen && (
+          <Lightbox
+            mainSrc={images[photoIndex]}
+            nextSrc={images[(photoIndex + 1) % images.length]}
+            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            onCloseRequest={() =>
+              setLightBoxState({ ...lightBoxState, isOpen: false })
+            }
+            onMovePrevRequest={() =>
+              setLightBoxState({
+                ...lightBoxState,
+                photoIndex: (photoIndex + images.length - 1) % images.length,
+              })
+            }
+            onMoveNextRequest={() =>
+              setLightBoxState({
+                ...lightBoxState,
+                photoIndex: (photoIndex + 1) % images.length,
+              })
+            }
+          />
+        )}
+        <section className={styles["project-top"]}>
+          <img
+            src={doc.data.image_principale.url}
+            alt={doc.data.image_principale.alt}
+            className={styles["main-image"]}
+          />
+          <article
+            className={`${styles.description} ${richTextStyling.content}`}
+          >
+            <h2 style={{ color: doc.data.couleur_du_titre }}>
+              {doc.data.titre_du_projet}
+            </h2>
+            <h3>{doc.data.titre_du_poste}</h3>
+            <RichText
+              render={doc.data.description_du_projet}
+              serializeHyperlink={CustomLink}
+            />
+          </article>
+        </section>
+        <LineSeparator mobileHide={true}>La suite</LineSeparator>
+        <section className={styles.flow}>
+          {doc.data.illustration.map((item, index) => {
+            if (item.image.miniature) {
+              return (
+                <div
+                  key={index}
+                  className={`${styles["thumb-container"]} ${
+                    styles[`container-${item.format.slug}`]
+                  }`}
+                >
+                  <a
+                    href={item.image.url}
+                    className={`${styles.miniature} ${
+                      styles[`${item.format.slug}`]
+                    }`}
+                    onClick={(e) => {
+                      setLightBoxState({ photoIndex: index, isOpen: true });
+                      e.preventDefault();
+                    }}
+                    style={{
+                      backgroundImage: `url("${item.image.miniature.url}")`,
+                    }}
+                  >
+                    <img
+                      src={item.image.miniature.url}
+                      alt={item.image.meta}
+                      className={styles.image}
+                    />
+                  </a>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </section>
+      </Fragment>
+    );
   } else if (notFound) {
     return <NotFound />;
   }

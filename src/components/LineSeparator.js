@@ -2,8 +2,11 @@ import React from "react";
 import styles from "../stylesheets/components/LineSeparator.module.scss";
 
 const LineSeparator = (props) => {
+  const wrapperStyles = `${styles.wrapper} ${
+    props.mobileHide ? styles["mobile-hide"] : ""
+  }`;
   return (
-    <div className={styles.wrapper}>
+    <div className={wrapperStyles}>
       <div className={styles["line-separation"]}></div>
       <div className={styles.text}>
         <h4>{props.children}</h4>

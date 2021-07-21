@@ -1,0 +1,111 @@
+@import "../variables.scss";
+
+.project-top {
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main-image {
+  display: none;
+}
+
+.description {
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.1;
+  text-align: center;
+  h2 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  h3 {
+    margin-bottom: 15px;
+  }
+  p {
+    display: none !important;
+  }
+}
+
+.flow {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+
+.thumb-container {
+  padding: 1.66%;
+  box-sizing: border-box;
+}
+
+.container- {
+  &grand-carre,
+  &grand-portrait,
+  &grand-paysage,
+  &panorama {
+    width: 100%;
+  }
+  &carre {
+    width: 50%;
+  }
+  &portrait {
+    width: 33.3%;
+  }
+  &paysage {
+    width: 66.7%;
+  }
+}
+
+.miniature {
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 0;
+  width: 100%;
+}
+
+.image {
+  display: none;
+}
+
+.grand-carre,
+.carre {
+  padding-top: 100%;
+}
+.grand-portrait,
+.portrait {
+  padding-top: 148.15%;
+}
+.grand-paysage {
+  padding-top: 67.5%;
+}
+.paysage {
+  padding-top: 70.08%;
+}
+.panorama {
+  padding-top: 42.21%;
+}
+
+@media screen and (min-width: $desktop-display) {
+  .main-image {
+    display: inline-block;
+    width: 45%;
+    padding-right: 1.5%;
+    box-sizing: border-box;
+  }
+  .project-top {
+    padding: 10px;
+  }
+  .description {
+    width: 55%;
+    padding-left: 1.5%;
+    text-align: left;
+    float: right;
+    p {
+      display: block !important;
+    }
+  }
+}
