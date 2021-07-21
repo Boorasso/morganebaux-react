@@ -23,9 +23,6 @@ function removeSplashScreen() {
   }
 }
 
-/**
- * Main application componenet
- */
 const App = (props) => {
   const repoNameArray = /([^/]+)\.cdn.prismic\.io\/api/.exec(apiEndpoint);
   const repoName = repoNameArray[1];
