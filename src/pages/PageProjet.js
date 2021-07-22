@@ -14,6 +14,7 @@ const PageProjet = ({ match }) => {
     photoIndex: 0,
     isOpen: false,
   });
+  const [infoIsOpen, setInfoIsOpen] = useState(false);
   const [notFound, toggleNotFound] = useState(false);
   const uid = match.params.uid;
 
@@ -73,16 +74,29 @@ const PageProjet = ({ match }) => {
             className={styles["main-image"]}
           />
           <article
-            className={`${styles.description} ${richTextStyling.content}`}
+            className={`${styles.description} ${richTextStyling.content} ${
+              !infoIsOpen ? styles.closed : ""
+            }`}
           >
             <h2 style={{ color: doc.data.couleur_du_titre }}>
               {doc.data.titre_du_projet}
             </h2>
             <h3>{doc.data.titre_du_poste}</h3>
-            <RichText
-              render={doc.data.description_du_projet}
-              serializeHyperlink={CustomLink}
-            />
+            {doc.data.description_du_projet.length > 0 && (
+              <Fragment>
+                <button
+                  className={styles.more}
+                  onClick={() => setInfoIsOpen(!infoIsOpen)}
+                  name="Plus d'infos"
+                >
+                  {infoIsOpen ? <div className={styles.less}></div> : "+"}
+                </button>
+                <RichText
+                  render={doc.data.description_du_projet}
+                  serializeHyperlink={CustomLink}
+                />
+              </Fragment>
+            )}
           </article>
         </section>
         <LineSeparator mobileHide={true}>La suite</LineSeparator>
@@ -120,7 +134,7 @@ const PageProjet = ({ match }) => {
             }
             return null;
           })}
-          {doc.data.video && (
+          {doc.data.video && doc.data.video.html && (
             <div
               dangerouslySetInnerHTML={{ __html: doc.data.video.html }}
               className={styles.embed}

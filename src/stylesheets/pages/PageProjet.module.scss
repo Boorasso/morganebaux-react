@@ -24,10 +24,36 @@
   }
   h3 {
     margin-bottom: 15px;
+    font-size: 11.5px;
   }
+  p {
+    padding-bottom: 25px;
+    font-size: 11.2px;
+  }
+}
+
+.closed {
   p {
     display: none !important;
   }
+}
+
+.more {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: grey;
+  margin-bottom: 10px;
+  height: 47px;
+}
+
+.less {
+  width: 19px;
+  background-color: grey;
+  height: 5px;
+  position: relative;
+  top: -1px;
 }
 
 .flow {
@@ -114,6 +140,9 @@
   }
   .project-top {
     padding: 10px;
+  }
+  .more {
+    display: none;
   }
   .description {
     width: 55%;
