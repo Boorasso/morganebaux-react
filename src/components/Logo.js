@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <Link to="/" className={styles["logo-link"]}>
       <img
-        src="/images/morgane logo.svg"
+        src={process.env.PUBLIC_URL + "/images/morgane logo.svg"}
         alt="Morgane Baux - Scénographe -
       Logo"
       />
